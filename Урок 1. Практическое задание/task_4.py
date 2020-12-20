@@ -27,3 +27,48 @@
 Для реализации хранилища можно применить любой подход,
 который вы придумаете, например, реализовать словарь.
 """
+
+
+users = {'vasa': {'password': 'egetfgbvd', 'activation': False},
+         'peta': {'password': 'wr3wfgfer', 'activation': True},
+         'vova': {'password': 'dsjlfjlsj', 'activation': True}}
+
+
+#O(1)
+def user_check_1(us):
+    user = input_user('Логин')
+    pas = input_user('Пароль')
+    if not us.get(user):
+        print('пользователь не зарегестрирован!')
+    elif us.get(user).get('password') != pas:
+        print('Неверный пароль')
+    elif us.get(user).get("activation") == False:
+        print("Вы не прошли активацию учетной записи.")
+    else:
+        print(f"{user}\nДобро пожаловать!")
+
+
+#O(n)
+def user_check_2(us):
+    user = input_user('Логин')
+    pas = input_user('Пароль')
+    for key, value in us.items():
+        if key == user:
+            if value['password'] == pas and value['activation']:
+                print(f"{user}\nДобро пожаловать!")
+            elif value['password'] == user and not value['activation']:
+                print("Вы не прошли активацию учетной записи.")
+            elif value['password'] != pas:
+                print('Неверный пароль')
+
+
+def input_user(text):
+    while True:
+        result = ''
+        while not result:
+            result = input(f"{text}:\n")
+        return result
+
+
+user_check_1(users)
+user_check_2(users)

@@ -17,3 +17,32 @@
 Алгоритмизатор должен развивать мышление, а это прежде всего практика.
 А без столкновения со сложностями его не развить.
 """
+from random import shuffle
+
+
+lst = [i for i in range(10)]
+shuffle(lst)
+
+
+# O(n^2) - квадратичная.
+def min_num_1(l):
+    for i in l:
+        is_min = True
+        for j in l:
+            if i > j:
+                is_min = False
+        if is_min:
+            return i
+
+
+# O(n) - линейная.
+def min_num_2(l):
+    result = 0
+    for i in l:
+        if i < result:
+            result = i
+    return result
+
+
+print(min_num_1(lst))
+print(min_num_2(lst))

@@ -22,3 +22,40 @@
 Реализуйте поиск трех компаний с наибольшей годовой прибылью.
 Выведите результат.
 """
+from operator import itemgetter
+
+
+company = {
+    'Coca-Cola': 16800000000,
+    'Google': 136220000000,
+    'Mail': int(5670000000 / 73.55),
+    'Apple': 274500000000
+}
+
+
+#O(n^3)
+def sort_1(dct):
+    result = []
+    for i in sorted(dct.values(), reverse=True)[:3]:
+        for x, n in dct.items():
+            if i == n:
+                result.append(x)
+    return result
+
+
+#O(NlogN)
+def sort_2(dct):
+    result = list(dct.items())
+    result.sort(key=lambda i: i[1], reverse=True)
+    return result[:3]
+
+#O(n log)
+def sort_3(dct):
+    """это лучше, быстрее исполняется"""
+    result = sorted(dct.items(), key=itemgetter(1), reverse=True)
+    return result[:3]
+
+
+print(sort_1(company))
+print(sort_2(company))
+print(sort_3(company))
