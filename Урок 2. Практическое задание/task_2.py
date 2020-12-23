@@ -16,3 +16,33 @@
 Введите число: 123
 Количество четных и нечетных цифр в числе равно: (1, 2)
 """
+
+even = 0
+not_even = 0
+
+
+def input_check():
+    while True:
+        try:
+            num = int(input('Введите число:\n'))
+            if len(str(num)) <= 1:
+                print('В числе должно быть больше 1 цифры')
+            else:
+                return num_count(str(num))
+        except ValueError:
+            print('Неверный ввод.')
+
+
+def num_count(n):
+    global even, not_even
+    i = len(n)
+    if len(n) == 0:
+        return print(f'четных = {even}\nне четных {not_even}')
+    if int(n[i-1]) % 2 == 0:
+        even += 1
+    else:
+        not_even += 1
+    return num_count(n[:i-1])
+
+
+input_check()

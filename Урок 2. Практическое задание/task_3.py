@@ -15,3 +15,30 @@
 Введите число, которое требуется перевернуть: 123
 Перевернутое число: 321
 """
+
+rev_num = ''
+
+
+def input_check():
+    while True:
+        try:
+            num = int(input('Введите число:\n'))
+            if len(str(num)) <= 1:
+                print('В числе должно быть больше 1 цифры')
+            else:
+                return num_revers(str(num))
+        except ValueError:
+            print('Неверный ввод.')
+
+
+def num_revers(n):
+    global rev_num
+    i = len(n)
+    if len(n) == 0:
+        return print(rev_num)
+    else:
+        rev_num += n[-1]
+    return num_revers(n[:i-1])
+
+
+input_check()
