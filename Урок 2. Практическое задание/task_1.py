@@ -28,3 +28,39 @@
 Вы вместо трехзначного числа ввели строку (((. Исправьтесь
 Введите операцию (+, -, *, / или 0 для выхода):
 """
+
+
+def input_check():
+    operations = ['+', '-', '*', '/', '0']
+    while True:
+        oper = input('Введите операцию (+, -, *, / или 0 для выхода):\n')
+        if oper not in operations:
+            print('Неверный ввод.')
+        elif oper == '0':
+            break
+        else:
+            while True:
+                try:
+                    num_a = int(input('Введите первое число:\n'))
+                    num_b = int(input('Введите второе число:\n'))
+                    if num_b == 0 or num_a == 0:
+                        print('Введен 0.')
+                    else:
+                        return perf_operation(oper, num_a, num_b)
+                except ValueError:
+                    print('неверный ввод.')
+
+
+def perf_operation(operant, n_a, n_b):
+    if operant == '+':
+        print(n_a + n_b)
+    elif operant == '-':
+        print(n_a - n_b)
+    elif operant == '*':
+        print(n_a * n_b)
+    else:
+        print(n_a / n_b)
+    input_check()
+
+
+input_check()
