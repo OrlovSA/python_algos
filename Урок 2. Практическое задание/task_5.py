@@ -18,3 +18,15 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+def output_ascii(line=1, num=32):
+    if num == 128:
+        return
+    if line != 10:
+        print(f'{num} - {chr(num)}', end=' ')
+    else:
+        line = 0
+        print(f'{num} - {chr(num)}')
+    return output_ascii(line+1, num+1)
+
+output_ascii()

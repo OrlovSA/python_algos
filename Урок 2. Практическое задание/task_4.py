@@ -9,3 +9,21 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+
+def input_check():
+    while True:
+        try:
+            num = int(input('Введите число:\n'))
+            return row_elements(num)
+        except ValueError:
+            print('Неверный ввод.')
+
+
+def row_elements(n, el=1.0, i=0.0):
+    if n == 0:
+        print(i)
+        return
+    return row_elements(n-1, el/-2, i+el)
+
+input_check()
