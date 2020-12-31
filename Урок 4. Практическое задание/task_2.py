@@ -30,17 +30,17 @@ print(
     timeit(
         "recursive_reverse(num_100)",
         setup='from __main__ import recursive_reverse, num_100',
-        number=10000))
+        number=10000)) # 0.0343806
 print(
     timeit(
         "recursive_reverse(num_1000)",
         setup='from __main__ import recursive_reverse, num_1000',
-        number=10000))
+        number=10000)) # 0.03722250000000002
 print(
     timeit(
         "recursive_reverse(num_10000)",
         setup='from __main__ import recursive_reverse, num_10000',
-        number=10000))
+        number=10000)) # 0.05607019999999999
 
 
 def memoize(f):
@@ -68,14 +68,45 @@ print(
     timeit(
         'recursive_reverse_mem(num_100)',
         setup='from __main__ import recursive_reverse_mem, num_100',
-        number=10000))
+        number=10000)) # 0.002716100000000027
 print(
     timeit(
         'recursive_reverse_mem(num_1000)',
         setup='from __main__ import recursive_reverse_mem, num_1000',
-        number=10000))
+        number=10000)) # 0.0026861999999999997
 print(
     timeit(
         'recursive_reverse_mem(num_10000)',
         setup='from __main__ import recursive_reverse_mem, num_10000',
-        number=10000))
+        number=10000)) # 0.0029566000000000037
+
+
+def my_version(number):
+    """Не придумал как улучшить код но, было интересно сколько затратит это решение
+    оно явно быстрее чем рекурсия без мемоизации"""
+    i = -1
+    number = str(number)
+    while True:
+        num = number[:i]
+        if not num:
+            return ''
+        i -= 1
+
+
+print('Моя версия my_version')
+print(
+    timeit(
+        "my_version(num_100)",
+        setup='from __main__ import my_version, num_100',
+        number=10000)) # 0.010934300000000008
+print(
+    timeit(
+        "my_version(num_1000)",
+        setup='from __main__ import my_version, num_1000',
+        number=10000)) # 0.013149999999999995
+print(
+    timeit(
+        "my_version(num_10000)",
+        setup='from __main__ import my_version, num_10000',
+        number=10000)) # 0.01966219999999999
+
