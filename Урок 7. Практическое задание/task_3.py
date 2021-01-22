@@ -13,3 +13,31 @@
 arr[m]
 from statistics import median
 """
+
+import random
+from statistics import median
+
+
+def find_m(i):
+    left = []
+    right = []
+    for n, val in enumerate(lst):
+        if val <= lst[i] and n != i:
+            left.append(val)
+        elif val >= lst[i] and n != i:
+            right.append(val)
+    if len(left) == len(right):
+        return True
+
+
+m = 10
+lst = [random.randint(-100, 100) for _ in range(2 * m + 1)]
+print(lst)
+
+for n, val in enumerate(lst):
+    if find_m(n):
+        print(lst[n])
+
+print(median(lst))
+
+
